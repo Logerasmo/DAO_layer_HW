@@ -22,6 +22,6 @@ public class Repository {
 
 
     public List<Person> getPersonsByCity(String city) {
-        return entityManager.createQuery("SELECT p FROM Person p", Person.class).getResultList().stream().filter(p -> p.getCity_of_living().equals(city)).toList();
+        return entityManager.createQuery("SELECT p FROM Person p", Person.class).getResultList().stream().filter(p -> p.getСityOfLiving().equals(city)).toList();
     }
 }
