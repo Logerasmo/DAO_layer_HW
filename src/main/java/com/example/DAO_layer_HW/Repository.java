@@ -1,27 +1,13 @@
 package com.example.DAO_layer_HW;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-
-public class Repository {
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private NamedParameterJdbcTemplate template;
-
-
-    public List<Person> getPersonsByCity(String city) {
-        return entityManager.createQuery("SELECT p FROM Person p", Person.class).getResultList().stream().filter(p -> p.getСityOfLiving().equals(city)).toList();
-    }
+public interface Repository extends JpaRepository<Person, Long> {
+    List<Person> findByCityOfLiving(String cityOfLiving);
+    List<Person> findByAgeLessThanOrderByAgeAsc(Integer age);
+    Optional<Person> findByNameAndSurname(String name, String surname);
 }
