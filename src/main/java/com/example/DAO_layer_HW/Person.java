@@ -29,7 +29,7 @@ public class Person {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.phone_number = phoneNumber;
+        this.phoneNumber = phoneNumber;
         this.cityOfLiving = cityOfLiving;
     }
 
